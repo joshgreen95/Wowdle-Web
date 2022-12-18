@@ -1,5 +1,4 @@
-import { render } from "react-dom";
-import { getDailyRandNPC } from "./handleNPC";
+import { getDailyRandNPC } from "./handleNPC.js";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
 export async function getImg(){
@@ -15,7 +14,7 @@ export async function getImg(){
             return(imgURL)
         })
         .catch((error) => {
-            throw new error("IMG Could not be Found")
+            throw new error("IMG Could not be found")
         })
 
 }

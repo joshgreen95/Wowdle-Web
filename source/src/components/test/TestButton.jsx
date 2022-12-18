@@ -1,8 +1,7 @@
-import { async } from '@firebase/util';
 import { render } from '@testing-library/react';
-import React, { useState, useEffect } from 'react';
-import { formatNPCList, getDailyRandNPC } from '../../modules/fblogic/handleNPC';
-import { getImg } from '../../modules/getIMG';
+import React from 'react';
+import { formatNPCList, getDailyRandNPC } from '../../modules/fblogic/handleNPC.js';
+import { getImg } from '../../modules/fblogic/getIMG.js';
 
 
 
@@ -39,7 +38,7 @@ export default class TestButton extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.displayDBItems.bind(this)}> button </button>
+                <button onClick={this.displayDBItems.bind(this)}> Test </button>
             </div >
         );
     }

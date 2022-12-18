@@ -1,5 +1,5 @@
 import "./css.css";
-import TestButton from './components/test/testButton';
+import TestButton from './components/test/TestButton';
 
 
 function App() {

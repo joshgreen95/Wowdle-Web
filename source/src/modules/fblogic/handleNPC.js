@@ -1,12 +1,13 @@
 import { fireStoreDB } from "./firebase";
-import { collection, getDoc, getDocs } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
     class NPC {
-        constructor(name, zone, continent, img)
+        constructor(name, zone, continent, faction, img)
         {
             this.name = name;
             this.zone = zone;
             this.continent = continent;
+            this.faction = faction;
             this.img = img;
         }
     };
@@ -35,13 +36,13 @@ import { collection, getDoc, getDocs } from "firebase/firestore";
                 let npcName = npc._document.data.value.mapValue.fields.name.stringValue;
                 let npcZone = npc._document.data.value.mapValue.fields.zone.stringValue;
                 let npcContinent = npc._document.data.value.mapValue.fields.continent.stringValue;
+                let npcFaction = npc._document.data.value.mapValue.fields.faction.stringValue;
                 let npcIMG = npc._document.data.value.mapValue.fields.img.referenceValue;
 
-                const newNPC = new NPC(npcName, npcZone, npcContinent, npcIMG);
+                const newNPC = new NPC(npcName, npcZone, npcContinent, npcFaction, npcIMG);
                 npcArray.push(newNPC);        
             })
         })
-        console.log(`Logging NPC Array on handleNPC : ${npcArray}`);
         return npcArray;
     };
 
