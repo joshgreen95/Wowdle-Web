@@ -1,0 +1,18 @@
+body{
+    background-color: black;
+}
+
+#profile {
+    color: grey;
+    background-color: white;
+}
+
+.frame {
+    display: block;
+    size: 300px;
+    background-color: grey;
+    border:3px red;
+}
+image{
+    color: red;
+}
