@@ -15,14 +15,13 @@ export default function gameBoard() {
         <NPCImage />
         <div className='guessboxes'>
           <GuessBox order={0} />
-          <GuessBox order={0} />
-          <GuessBox order={0} />
-          <GuessBox order={0} />
-          <GuessBox order={0} />
+          <GuessBox order={1} />
+          <GuessBox order={2} />
+          <GuessBox order={3} />
+          <GuessBox order={4} />
         </div>
         <div>
-          <EntryField />
-          <SubmitButton />
+          <GuessForm />
         </div>
       </div>
     </>
