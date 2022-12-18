@@ -21,6 +21,7 @@ export async function getImg(){
 }
 
 function splitURL(url){
+    //TODO: Find nicer implimentation this will break if anything changes.
     //splits url at relevant point
     // no need to change unless projects change
     return url.slice(45);

@@ -1,7 +1,7 @@
 import { async } from '@firebase/util';
 import { render } from '@testing-library/react';
 import React, { useState, useEffect } from 'react';
-import { formatNPCList, getDailyRandNPC } from '../../modules/handleNPC';
+import { formatNPCList, getDailyRandNPC } from '../../modules/fblogic/handleNPC';
 import { getImg } from '../../modules/getIMG';
 
 

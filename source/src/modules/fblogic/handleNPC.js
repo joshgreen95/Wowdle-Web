@@ -1,4 +1,4 @@
-import { fireStoreDB } from "../firebase";
+import { fireStoreDB } from "./firebase";
 import { collection, getDoc, getDocs } from "firebase/firestore";
 
     class NPC {
