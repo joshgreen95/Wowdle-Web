@@ -1,18 +1,54 @@
-body{
-    background-color: black;
-}
 
-#profile {
-    color: grey;
-    background-color: white;
-}
-
-.frame {
-    display: block;
-    size: 300px;
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flexbox;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: grey;
-    border:3px red;
+    overflow: hidden;
 }
-image{
-    color: red;
+
+#root{
+    position: absolute;
+    top: 10vh;
 }
+.game{
+    margin-top: 0;
+}
+.gameboard{
+    display: flexbox;
+    align-items: center;
+    justify-content: center;
+    width: 40vw;
+    margin-top: 0;
+}
+
+#imagecontainer{
+    align-items: center;
+    justify-content: center;
+    margin: 0vw;
+}
+
+#lifecounter{
+    display: inline-flex;
+    align-items: center;
+    border: 3px, darkcyan;
+
+}
+
+.lifepoint{
+    display: inline-flex;
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+    background-color: green;
+    border: 10px black;
+    box-shadow: 100px black;
+    border-radius: 50%;
+}
+
+#npcimage{
+    width: 20vw;
+}
+

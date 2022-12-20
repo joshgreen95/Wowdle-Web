@@ -1,10 +1,10 @@
 import React from 'react'
-import { useEffect } from 'react'
 
-export default function NPCImage() {
+export default function NPCImage(props) {
+  
+
     
-
-    return (
-    <div>NPCImage</div>
+return (
+    <img src={props.src} id={props.id} />
   )
 }

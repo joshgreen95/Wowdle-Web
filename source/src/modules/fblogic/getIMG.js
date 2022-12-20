@@ -1,27 +1,22 @@
-import { getDailyRandNPC } from "./handleNPC.js";
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 
-export async function getImg(){
-    const storage = getStorage();
-    const imgURL =  getDailyRandNPC().img
-    const processedURL = splitURL(imgURL);
-    const npcIMGRef = ref(storage, processedURL);
-    
-    getDownloadURL(npcIMGRef)
-        .then((imgURL) => {
-            const img = document.getElementById("NPCImage");
-            img.setAttribute('src', imgURL);
-            return(imgURL)
-        })
-        .catch((error) => {
-            throw new error("IMG Could not be found")
-        })
+export async function GetImg(dailyRandNPC){
 
+    const storage = getStorage();
+    const imgUrlRef = dailyRandNPC.img;
+    const processedURL = SplitUrl(imgUrlRef);
+    const npcIMGRef = ref(storage, processedURL);
+    var fetchedUrl = null;
+    
+    await getDownloadURL(npcIMGRef)
+        .then((imgURL) => {
+            fetchedUrl = imgURL;
+        });
+    return fetchedUrl;
 }
 
-function splitURL(url){
+function SplitUrl(url){
     //TODO: Find nicer implimentation this will break if anything changes.
-    //splits url at relevant point
-    // no need to change unless projects change
-    return url.slice(45);
+    const slicedUrl = url.slice(45);
+    return slicedUrl;
 }
