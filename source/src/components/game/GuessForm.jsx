@@ -1,25 +1,21 @@
-import React from 'react'
-import { CheckAnswer } from '../../modules/gamelogic/HandleSubmit'
+import React , { useRef } from 'react';
+import { HandleAnswer } from '../../modules/gamelogic/HandleAnswer';
 
 export default function GuessForm() {
+
+  const ref = useRef(null);
+  const handleSubmit = (event) => {
+    HandleAnswer(ref.current.value);
+    ref.current.value = '';
+    event.preventDefault();
+  } 
+
   return (
-    <form onSubmit={console.log('Form Submitted')} id='guessform'>
+    <form onSubmit={handleSubmit} id='guessform'>
       <div id='inputfield'>
-        <input id='guessfield' type='text' />
+        <input ref={ref} id='guessfield' type='text' />
       </div>
         <button id='submitbutton' type='submit'> </button>
     </form>
   )
 }
-
-// function HandleSubmit(){
-//   let answerBool = CheckAnswer();
-
-//   if(answerBool) {
-//     alert("Answer is correct");
-//   } else if(answerBool == null) {
-//     throw ("Error in HandleSubmit: Bool hasnt been ");
-//   } else {
-//     alert("Answer is incorrect");
-//   }
-// }

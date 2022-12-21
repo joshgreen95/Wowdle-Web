@@ -1,16 +1,6 @@
 import { fireStoreDB } from "./firebase";
 import { collection, getDocs } from "firebase/firestore";
-
-    class NPC {
-        constructor(name, zone, continent, faction, img)
-        {
-            this.name = name;
-            this.zone = zone;
-            this.continent = continent;
-            this.faction = faction;
-            this.img = img;
-        }
-    };
+import { NPC } from "./NPCTemplate";
 
     export var npcArray = [];
     export var dailyRandomNPC = null;

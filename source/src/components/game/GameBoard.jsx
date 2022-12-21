@@ -5,25 +5,28 @@ import GuessForm from './GuessForm';
 import { FormatNPCList, GetDailyRandNPC } from '../../modules/fblogic/HandleNPC';
 import { GetImg } from '../../modules/fblogic/GetIMG';
 import LifeCounter from './LifeCounter';
+import HintBox from './HintBox';
+import { setHADailyNPC } from '../../modules/gamelogic/HandleAnswer';
+import { currentGameState } from '../../modules/gamelogic/GameState';
 
 export default class GameBoard extends Component {
   constructor(props){
     super(props);
-    this.npcImageUrl = null;
+    if (currentGameState.dateLastPlayed != new Date().getDate){
+      currentGameState.NewGame();
+    }
   }
 
   componentDidMount(){
     //On Mount calls setup of game. 
     FormatNPCList().then((npcArr) => {
       GetDailyRandNPC(npcArr).then((npc) => {
+        setHADailyNPC(npc);
         //Gets profile img and calls render on component.
         GetImg(npc).then((randNpcImageUrl) => {
           let imageContainer = document.getElementById('imagecontainer')
-          let image = document.getElementById('npcimage')
           const root = createRoot(imageContainer);
           root.render((<NPCImage id='npcimage' src={randNpcImageUrl} />));
-
-          imageContainer.setAttribute('src', )
         })
       })
     });
@@ -37,6 +40,7 @@ export default class GameBoard extends Component {
                 <NPCImage src="" id='npcimage' />
               </div>
               <LifeCounter />
+              <HintBox />
              <div>
                <GuessForm />
              </div>
