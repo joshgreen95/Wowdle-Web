@@ -1,6 +1,6 @@
 import { NPC } from "../fblogic/NPCTemplate";
-import { currentGameState } from "./GameState";
-
+import { HandleWin, HandleLoss } from "./HandleWinLoss";
+import { gameSave, SaveGame, UpdateLifePoints} from "./SaveGame";
 
 
 var dailyNPC = new NPC('a', 'b', 'c', 'd', 'mockimg');
@@ -12,44 +12,43 @@ export function setHADailyNPC(npc)
 
 export function HandleAnswer(answer) {
     const dailyNPCName = dailyNPC.name.toLowerCase();
-
+    const turnCount = gameSave.turnCount;
     const sanitizedAnswer = SanitizeAnswer(answer);
 
     if (!dailyNPCName) { console.error("Error selecting Daily NPC"); }
     if (!sanitizedAnswer) { return; }
 
     if (sanitizedAnswer === dailyNPCName){
-        WinGame();
+        HandleWin();
     } else {
-        HandleTurn(dailyNPC);
-        currentGameState.turnCount ++;
+        gameSave.turnCount ++;
+        HandleTurn(gameSave.turnCount);
+        UpdateLifePoints();
     }
+    SaveGame();
+    
 }
 
-function HandleTurn(dailyNPC){
-    const continentHintRef = document.getElementById('continenthint');
-    const zoneHintRef = document.getElementById('zonehint');
-    const factionHintRef = document.getElementById('factionhint');
-    
-    switch (currentGameState.turnCount) {
-        case 0:
-            continentHintRef.innerHTML = `${dailyNPC.continent}`;
-            HandleLifePoint(0);
-        break;
+function HandleTurn(turnCount){
+    switch (turnCount) {
         case 1:
-            zoneHintRef.innerHTML = `${dailyNPC.zone}`;
-            HandleLifePoint(1);
+            UpdateHint(1);
         break;
         case 2:
-            factionHintRef.innerHTML = `${dailyNPC.faction}`;
-            HandleLifePoint(2);
+            UpdateHint(2);
         break;
         case 3:
-            GameOver();
+            UpdateHint(3);
         break;
-
+        case 4:
+            HandleLoss();
+            SaveGame();
+        break;
+        default:
+            console.log('Switch case is broken aaaaa');
+        break;
     }
-        
+    if (turnCount > 4) { HandleLoss() };
 }
 
 function SanitizeAnswer(answer){
@@ -58,22 +57,18 @@ function SanitizeAnswer(answer){
     return sanitizedAnswer;
 }
 
-function HandleLifePoint(lifePointPos){
-    console.log(`Handling life point ${lifePointPos}`);
-    
-    const lifepoint = document.getElementById(`lifepoint${lifePointPos}`);
-    console.log(lifepoint);
-    lifepoint.style.backgroundColor = 'rgba(1, 1, 1, 0)';
+export function UpdateHint(hintIndex) {
+    const continentHintRef = document.getElementById('continenthint');
+    const zoneHintRef = document.getElementById('zonehint');
+    const factionHintRef = document.getElementById('factionhint');
+
+    if (hintIndex === 1) {
+        continentHintRef.innerHTML = `${dailyNPC.continent}`;
+    }
+    if (hintIndex === 2) {
+        zoneHintRef.innerHTML = `${dailyNPC.zone}`;
+    }
+    if (hintIndex === 3) {
+        factionHintRef.innerHTML = `${dailyNPC.faction}`;
+    }
 }
-
-function GameOver(){
-    console.log('Game Over');
-}
-
-function WinGame()
-{
-    console.log('You Guessed Correctly!!');
-}
-
-
-

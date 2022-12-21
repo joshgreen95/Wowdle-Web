@@ -1,7 +1,9 @@
-class GameState {
-    constructor(turnCount){
-        this.turnCount = turnCount;
+export class GameState{
+    constructor(){
+        this.turnCount = 0;
         this.dateLastPlayed = new Date();
+        this.todayWin = false;
+        this.todayLose = false;
     }
 
      SetTurnCount(turnCount){
@@ -12,6 +14,5 @@ class GameState {
         this.turnCount = 0;
         this.dateLastPlayed = new Date();
     }
-}
 
-export var currentGameState = new GameState;
+}

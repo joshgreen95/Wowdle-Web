@@ -7,21 +7,20 @@ import { GetImg } from '../../modules/fblogic/GetIMG';
 import LifeCounter from './LifeCounter';
 import HintBox from './HintBox';
 import { setHADailyNPC } from '../../modules/gamelogic/HandleAnswer';
-import { currentGameState } from '../../modules/gamelogic/GameState';
+import { loadHints, UpdateLifePoints } from '../../modules/gamelogic/SaveGame';
 
 export default class GameBoard extends Component {
   constructor(props){
     super(props);
-    if (currentGameState.dateLastPlayed != new Date().getDate){
-      currentGameState.NewGame();
-    }
   }
 
   componentDidMount(){
     //On Mount calls setup of game. 
     FormatNPCList().then((npcArr) => {
+      UpdateLifePoints();
       GetDailyRandNPC(npcArr).then((npc) => {
         setHADailyNPC(npc);
+        loadHints();
         //Gets profile img and calls render on component.
         GetImg(npc).then((randNpcImageUrl) => {
           let imageContainer = document.getElementById('imagecontainer')
@@ -30,6 +29,7 @@ export default class GameBoard extends Component {
         })
       })
     });
+    
   }
   render() {    
 
