@@ -1,4 +1,6 @@
+//Core
 import React from 'react';
+//Modules
 import LifePoint from './LifePoint';
 
 export default function LifeCounter() {

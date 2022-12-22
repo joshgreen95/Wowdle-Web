@@ -1,3 +1,4 @@
+//Boiler Plate code for the game state class. Used to store the state of the game
 export class GameState{
     constructor(){
         this.turnCount = 0;

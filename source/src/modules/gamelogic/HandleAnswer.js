@@ -1,8 +1,9 @@
+//Functions
 import { NPC } from "../fblogic/NPCTemplate";
 import { HandleWin, HandleLoss } from "./HandleWinLoss";
 import { gameSave, SaveGame, UpdateLifePoints} from "./SaveGame";
 
-
+//Define dailyNPC with boilerplate values, otherwise read null error
 var dailyNPC = new NPC('a', 'b', 'c', 'd', 'mockimg');
 
 export function setHADailyNPC(npc)
@@ -12,7 +13,6 @@ export function setHADailyNPC(npc)
 
 export function HandleAnswer(answer) {
     const dailyNPCName = dailyNPC.name.toLowerCase();
-    const turnCount = gameSave.turnCount;
     const sanitizedAnswer = SanitizeAnswer(answer);
 
     if (!dailyNPCName) { console.error("Error selecting Daily NPC"); }

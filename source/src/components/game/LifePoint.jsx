@@ -1,3 +1,4 @@
+//Core
 import React from 'react';
 
 export default function LifePoint(props) {

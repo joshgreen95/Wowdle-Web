@@ -1,3 +1,4 @@
+//Functions
 import { gameSave } from "./SaveGame";
 
 export function HandleWin(){

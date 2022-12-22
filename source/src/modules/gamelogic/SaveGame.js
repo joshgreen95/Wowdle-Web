@@ -1,3 +1,4 @@
+//Functions
 import { GameState } from "./GameState";
 import { UpdateHint } from "./HandleAnswer";
 
@@ -32,12 +33,11 @@ export function UpdateLifePoints() {
     if (turncount === 0 || turncount > 4) { return ; }
     for (let i = 0; i < turncount; i++) {
         const lifepoint = document.getElementById(`lifepoint${i}`);
-        console.log('Updating \n' + lifepoint);
         lifepoint.style.backgroundColor = 'rgba(1, 1, 1, 0)';
     };
 }
 
-export function loadHints(){
+export function LoadHints(){
     let turnCount = gameSave.turnCount;
     
     if (turnCount === 0) { return; }

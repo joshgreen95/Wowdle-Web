@@ -1,5 +1,8 @@
+//Core
 import React from 'react';
+//Components
 import Hint from './Hint';
+
 export default function HintBox() {
   return (
     <div id='hintbox'>
