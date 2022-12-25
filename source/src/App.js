@@ -13,12 +13,14 @@ import { FormatNPCList, GetDailyRandNPC } from "./modules/fblogic/HandleNPC";
 import { setHADailyNPC } from "./modules/gamelogic/HandleAnswer";
 import { GetImg } from "./modules/fblogic/GetIMG";
 import { createRoot } from "react-dom/client";
+import { GetStats } from "./modules/gamelogic/Stats";
 
 export default class App extends Component {
   constructor(){
     super();
     if(this.todayLose !== Boolean) { this.todayLose = false; }
     if(this.todaywin !== Boolean) { this.todayWin = false; }
+    this.stats = GetStats();
     GetLocalStorage();
     this.todayWin = gameSave.todayWin;
     this.todayLose = gameSave.todayLose;

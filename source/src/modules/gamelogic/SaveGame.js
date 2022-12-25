@@ -1,6 +1,7 @@
 //Functions
 import { GameState } from "./GameState";
 import { UpdateHint } from "./HandleAnswer";
+import { GetStats } from "./Stats";
 
 export let gameSave = {};
 
@@ -18,7 +19,7 @@ export function GetLocalStorage(){
         gameSave.todayWin = localStorage.getItem('todayWin') === 'true';
         gameSave.todayLose = localStorage.getItem('todayLose') === 'true';
     }
-
+    GetStats();
 }
 
 export function SaveGame() {

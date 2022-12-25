@@ -7,12 +7,9 @@ export default function GuessForm() {
   const ref = useRef(null);
   
   const handleSubmit = (event) => {
-    
+    event.preventDefault();
     if(ref.current.value === null) { return ;}
     HandleAnswer(ref.current.value);
-    ref.current.value = '';
-    event.preventDefault();
-
   } 
 
   return (

@@ -1,12 +1,15 @@
 //Functions
 import { gameSave } from "./SaveGame";
+import { AddStats } from "./Stats";
 
 export function HandleWin(){
+    alert('You Have Won');
     gameSave.todayWin = true;
-    console.log('You Have Won');
+    AddStats('W');
 }
 
 export function HandleLoss(){
     gameSave.todayLose = true;
-    console.log('You Have Lost');
+    AddStats('L');
+    alert('You Have Lost');
 }

@@ -16,7 +16,7 @@ export function HandleAnswer(answer) {
     const sanitizedAnswer = SanitizeAnswer(answer);
 
     if (!dailyNPCName) { console.error("Error selecting Daily NPC"); }
-    if (!sanitizedAnswer) { return; }
+    if (!sanitizedAnswer) { return ; }
 
     if (sanitizedAnswer === dailyNPCName){
         HandleWin();
