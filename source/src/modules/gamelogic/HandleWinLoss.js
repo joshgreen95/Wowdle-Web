@@ -5,11 +5,11 @@ import { AddStats } from "./Stats";
 export function HandleWin(){
     alert('You Have Won');
     gameSave.todayWin = true;
-    AddStats('W');
+    AddStats();
 }
 
 export function HandleLoss(){
     gameSave.todayLose = true;
-    AddStats('L');
+    AddStats();
     alert('You Have Lost');
 }
