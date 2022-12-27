@@ -7,7 +7,8 @@ export let gameSave = {};
 
 export function GetLocalStorage(){
     let dateLastPlayed = new Date(localStorage.getItem('dateLastPlayed'));
-    if (dateLastPlayed.getDay() !== new Date().getDay) {
+    if (dateLastPlayed.getDay() !== new Date().getDay()) {
+        console.log(`SaveGame comparison function testing new day: ${dateLastPlayed.getDay() !== new Date().getDay()}`)
         gameSave = new GameState();
         SaveGame();
     }
@@ -31,7 +32,9 @@ export function SaveGame() {
 
 export function UpdateLifePoints() {
     let turncount = gameSave.turnCount;
-    if (turncount === 0 || turncount > 4) { return ; }
+    //Crashes if turncount is more than 4 as there are only 3 elements.
+    if(turncount >= 4) { turncount = 3;}
+    if (turncount === 0) { return ; }
     for (let i = 0; i < turncount; i++) {
         const lifepoint = document.getElementById(`lifepoint${i}`);
         lifepoint.style.backgroundColor = 'rgba(1, 1, 1, 0)';

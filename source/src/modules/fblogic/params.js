@@ -21,3 +21,7 @@ export const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app);
 export const fireStoreDB = getFirestore(app);
+
+
+//GIT
+export const gitLink = 'https://github.com/joshgreen95';

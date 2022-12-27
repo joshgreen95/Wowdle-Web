@@ -7,6 +7,8 @@ import WinScreen from "./components/frame/WinScreen";
 import GameOverScreen from "./components/frame/GameOverScreen";
 import GameBoard from "./components/game/GameBoard";
 import NPCImage from "./components/game/NPCImage";
+import StatsScreen from "./components/frame/StatsScreen";
+import HelpScreen from "./components/frame/HelpScreen";
 //Functions
 import { GetLocalStorage, gameSave, UpdateLifePoints, LoadHints } from "./modules/gamelogic/SaveGame";
 import { FormatNPCList, GetDailyRandNPC } from "./modules/fblogic/HandleNPC";
@@ -18,14 +20,19 @@ import { GetStats } from "./modules/gamelogic/Stats";
 export default class App extends Component {
   constructor(){
     super();
-    if(this.todayLose !== Boolean) { this.todayLose = false; }
-    if(this.todaywin !== Boolean) { this.todayWin = false; }
-    this.stats = GetStats();
     GetLocalStorage();
-    this.todayWin = gameSave.todayWin;
-    this.todayLose = gameSave.todayLose;
+    this.stats = GetStats();
+    console.table(gameSave);
 
+    this.state = {
+      todayWin: gameSave.todayWin,
+      todayLose: gameSave.todayLose,
+      controlsDisabled: (gameSave.todayWin || gameSave.todayLose),
+      statsShown: false,
+      helpShown: false
+    };
 
+    console.table(this.state);
   }
 
   componentDidMount(){
@@ -50,25 +57,33 @@ export default class App extends Component {
     });
   }
   
+  ShowStatScreen(){
+    const inverseStatsShown = !this.state.statsShown;
+    this.setState({ statsShown: inverseStatsShown, helpShown: false });
+  }
+
+  ShowHelpScreen() {
+    const inverseHelpShown = !this.state.helpShown;
+    this.setState({ helpShown: inverseHelpShown, statsShown: false });
+  }
+
    render() {
-    let render = <></>;
-    
-    if(this.todayLose) {
-      render = <GameOverScreen />;
-
-    } else if(this.todayWin){
-      render = <WinScreen />
-
-    } else if(!this.todayLose && !this.todayWin)
-    {
-      render = <GameBoard />
-    }
-
-    
     return (
       <>
-      <Border className='Border' />
-      {render}
+      <>
+      <Border className='Border' showStatScreen={this.ShowStatScreen.bind(this)} showHelpScreen={this.ShowHelpScreen.bind(this)}/>
+      {/* This Renders Stats screen if this.state.statsshown === true */}     
+      {this.state.statsShown && (<StatsScreen />)}
+      {this.state.helpShown && (<HelpScreen />)}
+
+
+      </>
+      <>
+      <GameBoard controlsDisabled={this.state.controlsDisabled}/>
+      {this.state.todayWin && (<WinScreen />)}
+      {this.state.todayLose && (<GameOverScreen />)}
+      
+      </>
       </>
     )
   }

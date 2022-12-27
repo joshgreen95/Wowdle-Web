@@ -1,5 +1,5 @@
 //Core
-import { fireStoreDB } from "./firebase";
+import { fireStoreDB } from "./params";
 //Functions
 import { collection, getDocs } from "firebase/firestore";
 import { NPC } from "./NPCTemplate";

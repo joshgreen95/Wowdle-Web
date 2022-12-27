@@ -22,7 +22,7 @@ export default class GameBoard extends Component {
               <LifeCounter />
               <HintBox />
              <div>
-               <GuessForm />
+               <GuessForm controlsDisabled={this.props.controlsDisabled}/>
              </div>
            </div>
          </>
