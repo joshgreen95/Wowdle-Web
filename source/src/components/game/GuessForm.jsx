@@ -15,7 +15,7 @@ export default function GuessForm(props) {
   return (
     <form onSubmit={handleSubmit} id='guessform'>
       <div id='inputfield'>   
-        <input ref={ref} id='guessfield' type='text' disabled={props.controlsDisabled}/>
+        <input ref={ref} id='guessfield' type='text' disabled={props.controlsDisabled} autoComplete='off'/>
       </div>
       
         <button id='submitbutton' type='submit' value={toString()} > </button>
