@@ -57,6 +57,10 @@ export default class App extends Component {
     });
   }
   
+  UpdateWinLoss(){
+    this.setState({todayWin: gameSave.todayWin, todayLose: gameSave.todayLose});
+  }
+
   ShowStatScreen(){
     const inverseStatsShown = !this.state.statsShown;
     this.setState({ statsShown: inverseStatsShown, helpShown: false });
@@ -79,7 +83,7 @@ export default class App extends Component {
 
       </>
       <>
-      <GameBoard controlsDisabled={this.state.controlsDisabled}/>
+      <GameBoard updateWinLoss={this.UpdateWinLoss.bind(this)} controlsDisabled={this.state.controlsDisabled}/>
       {this.state.todayWin && (<WinScreen />)}
       {this.state.todayLose && (<GameOverScreen />)}
       

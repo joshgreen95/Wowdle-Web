@@ -10,6 +10,7 @@ export default function GuessForm(props) {
     event.preventDefault();
     if(ref.current.value === null) { return ;}
     HandleAnswer(ref.current.value);
+    props.updateWinLoss();
   } 
 
   return (
