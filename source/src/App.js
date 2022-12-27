@@ -58,7 +58,8 @@ export default class App extends Component {
   }
   
   UpdateWinLoss(){
-    this.setState({todayWin: gameSave.todayWin, todayLose: gameSave.todayLose});
+    const controls = (gameSave.todayWin || gameSave.todayLose);
+    this.setState({todayWin: gameSave.todayWin, todayLose: gameSave.todayLose, controlsDisabled: controls});
   }
 
   ShowStatScreen(){
