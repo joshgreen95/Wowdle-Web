@@ -1,8 +1,12 @@
 
 body {
+    /* Handles Background, Commented out for now */
+    background: url('../public/imgs/background.jpg') no-repeat;
+    background-color: rgb(56, 56, 56);
+    background-blend-mode: multiply; 
+    
     display: flexbox;
     font-family: 'Poppins', sans-serif;
-    background-color: grey;
     overflow: hidden;
 }
 
@@ -26,22 +30,35 @@ body {
 
 .border{
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     height: 5vh;
-    width: 100%;
+    width: 35vw;
+    margin: auto;
+    justify-content: space-around;
+    align-items: center;
+
+    background-color: #343a40;
+
+    border-top-right-radius: 12px;
+    border-top-left-radius: 12px;
 }
 
-.game{
-    margin-top: 0;
-}
 .gameboard{
-    display: flexbox;
+    display: flex;
+    width: 35vw;
+    height: 90vh;
+    margin: auto;
+    flex-direction: column;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
-    width: 40vw;
-    margin: auto;
-    margin-top: 5vh;
+
+    background-color: #495057;
+    
+    border-top: 3px solid #E9ECEF;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    
+    box-shadow: 7px rgba(0, 0, 0, 0.5);
 }
 
 #imagecontainer{
@@ -50,11 +67,12 @@ body {
     margin: 0vw;
 }
 
+
 #lifecounter{
     display: inline-flex;
     align-items: center;
     border: 3px, darkcyan;
-
+    flex-direction: row;
 }
 
 .lifepoint{
@@ -72,3 +90,39 @@ body {
     width: 20vw;
 }
 
+#hintbox{
+    width: 30vw;
+}
+
+#hint{
+    display:inline;
+}
+.hintcontent{
+    display: inline;
+}
+
+#guessform{
+    display: flex;
+    flex-direction: row;
+}
+
+#guessfield{
+    background-color: black;
+    
+    font-family: inherit;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid gray;
+    outline: 0;
+    font-size: 1.3rem;
+    color: #ffff;
+    padding: 7px 0;
+    background: transparent;
+    transition: border-color 0.2s;
+}
+.formlabel{
+        display: block;
+        transition: 0.2s;
+        font-size: 1rem;
+        color: gray;
+}

@@ -16,10 +16,11 @@ export default function GuessForm(props) {
   return (
     <form onSubmit={handleSubmit} id='guessform'>
       <div id='inputfield'>   
+        <label for='guessfield' className='formlabel'>Take a Guess</label>
         <input ref={ref} id='guessfield' type='text' disabled={props.controlsDisabled} autoComplete='off'/>
       </div>
       
-      <button id='submitbutton' type='submit'  disabled={props.controlsDisabled}>______</button>
+      <button id='submitbutton' type='submit'  disabled={props.controlsDisabled}></button>
     </form>
   )
 }

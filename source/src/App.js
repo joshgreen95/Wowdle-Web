@@ -74,7 +74,7 @@ export default class App extends Component {
 
    render() {
     return (
-      <>
+      <div className="playfield">
       <>
       <Border className='Border' showStatScreen={this.ShowStatScreen.bind(this)} showHelpScreen={this.ShowHelpScreen.bind(this)}/>
       {/* This Renders Stats screen if this.state.statsshown === true */}     
@@ -89,7 +89,7 @@ export default class App extends Component {
       {this.state.todayLose && (<GameOverScreen />)}
       
       </>
-      </>
+      </div>
     )
   }
 }
