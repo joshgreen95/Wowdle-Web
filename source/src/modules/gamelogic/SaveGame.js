@@ -37,7 +37,8 @@ export function UpdateLifePoints() {
     if (turncount === 0) { return ; }
     for (let i = 0; i < turncount; i++) {
         const lifepoint = document.getElementById(`lifepoint${i}`);
-        lifepoint.style.backgroundColor = 'rgba(1, 1, 1, 0)';
+        lifepoint.style.background = 'rgba(1, 1, 1, 0)';
+        lifepoint.style.border = 'transparent';
     };
 }
 

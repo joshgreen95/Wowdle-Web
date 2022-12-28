@@ -16,6 +16,7 @@ import { setHADailyNPC } from "./modules/gamelogic/HandleAnswer";
 import { GetImg } from "./modules/fblogic/GetIMG";
 import { createRoot } from "react-dom/client";
 import { GetStats } from "./modules/gamelogic/Stats";
+import BottomBorder from "./components/frame/BottomBorder";
 
 export default class App extends Component {
   constructor(){
@@ -75,20 +76,21 @@ export default class App extends Component {
    render() {
     return (
       <div className="playfield">
-      <>
-      <Border className='Border' showStatScreen={this.ShowStatScreen.bind(this)} showHelpScreen={this.ShowHelpScreen.bind(this)}/>
-      {/* This Renders Stats screen if this.state.statsshown === true */}     
-      {this.state.statsShown && (<StatsScreen />)}
-      {this.state.helpShown && (<HelpScreen />)}
+        <div id="playwindow">
+          <>
+            <Border className='Border' showStatScreen={this.ShowStatScreen.bind(this)} />
+            {/* This Renders Stats screen if this.state.statsshown === true */}     
+            {this.state.statsShown && (<StatsScreen />)}
+            {this.state.helpShown && (<HelpScreen />)}
 
 
-      </>
-      <>
-      <GameBoard updateWinLoss={this.UpdateWinLoss.bind(this)} controlsDisabled={this.state.controlsDisabled}/>
-      {this.state.todayWin && (<WinScreen />)}
-      {this.state.todayLose && (<GameOverScreen />)}
-      
-      </>
+          </>
+          <>
+            <GameBoard updateWinLoss={this.UpdateWinLoss.bind(this)} controlsDisabled={this.state.controlsDisabled} showHelpScreen={this.ShowHelpScreen.bind(this)} />
+            {this.state.todayWin && (<WinScreen />)}
+            {this.state.todayLose && (<GameOverScreen />)}
+          </>
+        </div>
       </div>
     )
   }
