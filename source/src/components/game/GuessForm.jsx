@@ -11,16 +11,15 @@ export default function GuessForm(props) {
     if(ref.current.value === null) { return ;}
     HandleAnswer(ref.current.value);
     props.updateWinLoss();
+    ref.current.value = '';
   } 
 
   return (
-    <form onSubmit={handleSubmit} id='guessform'>
-      <div id='inputfield'>   
-        <label for='guessfield' className='formlabel'>Take a Guess</label>
-        <input ref={ref} id='guessfield' type='text' disabled={props.controlsDisabled} autoComplete='off'/>
-      </div>
-      
-      <button id='submitbutton' type='submit'  disabled={props.controlsDisabled}></button>
+    <form onSubmit={handleSubmit} id='guessform'> 
+        <label htmlFor='guessfield' className='formlabel'>Take a Guess</label>
+        <div id='textbox'>
+          <input ref={ref} id='guessfield' type='text' disabled={props.controlsDisabled} autoComplete='off'/>
+        </div>
     </form>
   )
 }

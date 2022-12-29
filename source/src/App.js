@@ -3,6 +3,7 @@ import "./css.css";
 import React, { Component } from 'react';
 //Components
 import Border from "./components/frame/Border";
+import BottomBorder from "./components/frame/BottomBorder";
 import WinScreen from "./components/frame/WinScreen";
 import GameOverScreen from "./components/frame/GameOverScreen";
 import GameBoard from "./components/game/GameBoard";
@@ -16,7 +17,6 @@ import { setHADailyNPC } from "./modules/gamelogic/HandleAnswer";
 import { GetImg } from "./modules/fblogic/GetIMG";
 import { createRoot } from "react-dom/client";
 import { GetStats } from "./modules/gamelogic/Stats";
-import BottomBorder from "./components/frame/BottomBorder";
 
 export default class App extends Component {
   constructor(){
@@ -75,23 +75,23 @@ export default class App extends Component {
 
    render() {
     return (
-      <div className="playfield">
-        <div id="playwindow">
           <>
-            <Border className='Border' showStatScreen={this.ShowStatScreen.bind(this)} />
-            {/* This Renders Stats screen if this.state.statsshown === true */}     
-            {this.state.statsShown && (<StatsScreen />)}
-            {this.state.helpShown && (<HelpScreen />)}
-
-
-          </>
-          <>
-            <GameBoard updateWinLoss={this.UpdateWinLoss.bind(this)} controlsDisabled={this.state.controlsDisabled} showHelpScreen={this.ShowHelpScreen.bind(this)} />
+          <div id='overlaycontainer'>
+            {/* This Renders Stats screen if this.state.statsshown === true */}
             {this.state.todayWin && (<WinScreen />)}
             {this.state.todayLose && (<GameOverScreen />)}
-          </>
+            {this.state.statsShown && (<StatsScreen />)}
+            {this.state.helpShown && (<HelpScreen />)}
+          </div>
+          <div className="playfield">
+            <div id="playwindow">
+
+              <Border className='Border' showStatScreen={this.ShowStatScreen.bind(this)} />
+              <GameBoard updateWinLoss={this.UpdateWinLoss.bind(this)} controlsDisabled={this.state.controlsDisabled}  />
+              <BottomBorder showHelpScreen={this.ShowHelpScreen.bind(this)} />
+          </div>
         </div>
-      </div>
+        </>
     )
   }
 }

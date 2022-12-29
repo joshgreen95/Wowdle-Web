@@ -1,4 +1,4 @@
 --TODO Create render module which creates a graph with things. Try to create own if not **Recharts?? 
 --TODO Explore animation Module // React Transition Group -- https://github.com/reactjs/react-transition-group/tree/v1-stable
 --TODO Fill in Text Content 
---TODO Style -- Font Awesome?
+--Style Overlay Windows

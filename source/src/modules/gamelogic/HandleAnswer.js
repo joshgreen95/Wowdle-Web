@@ -14,13 +14,13 @@ export function setHADailyNPC(npc)
 export function HandleAnswer(answer) {
     const dailyNPCName = dailyNPC.name.toLowerCase();
     const sanitizedAnswer = SanitizeAnswer(answer);
-
     if (!dailyNPCName) { console.error("Error selecting Daily NPC"); }
     if (!sanitizedAnswer) { return ; }
 
     if (sanitizedAnswer === dailyNPCName){
         HandleWin();
     } else {
+        console.log(gameSave)
         gameSave.turnCount ++;
         HandleTurn(gameSave.turnCount);
         UpdateLifePoints();

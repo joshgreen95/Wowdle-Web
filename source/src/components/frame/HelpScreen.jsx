@@ -7,7 +7,7 @@ export default function HelpScreen() {
     return (
             <div className='overlaywindow'> 
                 <h2>Check out my Github</h2>
-            <a href={gitLink} target="_blank" className='overlaywindow'>Here</a>
+                <a href={gitLink} target="_blank" >Here</a>
             </div>
   )
 }

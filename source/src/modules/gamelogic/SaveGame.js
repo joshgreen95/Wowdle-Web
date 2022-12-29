@@ -6,9 +6,11 @@ import { GetStats } from "./Stats";
 export let gameSave = {};
 
 export function GetLocalStorage(){
-    let dateLastPlayed = new Date(localStorage.getItem('dateLastPlayed'));
-    if (dateLastPlayed.getDay() !== new Date().getDay()) {
-        console.log(`SaveGame comparison function testing new day: ${dateLastPlayed.getDay() !== new Date().getDay()}`)
+    const dateLastPlayed = new Date(localStorage.getItem('dateLastPlayed'));
+    const today = new Date();
+
+    if (!localStorage.getItem('dateLastPlayed') || 
+        (dateLastPlayed.getDay() !== today.getDay())) {
         gameSave = new GameState();
         SaveGame();
     }
