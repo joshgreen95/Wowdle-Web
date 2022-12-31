@@ -23,3 +23,32 @@ export function AddStats(){
     console.log(stats);
     SaveStats();
 }
+
+export function GetWinPercent(){
+    let wins = 0;
+    let losses = 0;
+    let winPercent = 0;
+    //stops / 0 error
+    
+    if (stats != null) {
+        stats.forEach((value) => {
+            if (value >= 5) { losses++; }
+            else { wins++; }
+        });
+        if (losses === 0 && wins === 1) { return 100; }
+        winPercent = Math.floor((losses / wins) * 100);
+    };
+    return winPercent;
+}
+
+export function GetGamesPlayed(){
+    if(stats != null){
+        return stats.length;
+    }
+    else return 0;
+}
+
+export function ClearStats() {
+    alert('Your Stats have been cleared');
+    localStorage.removeItem('stats');
+}

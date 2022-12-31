@@ -32,8 +32,9 @@ import { NPC } from "./NPCTemplate";
                 let npcContinent = npc._document.data.value.mapValue.fields.continent.stringValue;
                 let npcFaction = npc._document.data.value.mapValue.fields.faction.stringValue;
                 let npcIMG = npc._document.data.value.mapValue.fields.img.referenceValue;
+                let npcID = npc._document.data.value.mapValue.fields.id.stringValue;
 
-                const newNPC = new NPC(npcName, npcZone, npcContinent, npcFaction, npcIMG);
+                const newNPC = new NPC(npcName, npcZone, npcContinent, npcFaction, npcIMG, npcID);
                 console.log(newNPC);
                 npcArray.push(newNPC);
                   
@@ -59,3 +60,12 @@ import { NPC } from "./NPCTemplate";
         
         return npcArray[rndNPCIndex];
     };
+    
+    export function ConstructWowHeadURL(){
+        let npcName = dailyRandomNPC.name;
+        let npcID = dailyRandomNPC.id;
+        let processedName = npcName.replace(' ', '-');
+
+        let wowHeadURL = `https://www.wowhead.com/npc=${npcID}/${npcName}`;
+        return wowHeadURL;
+    }

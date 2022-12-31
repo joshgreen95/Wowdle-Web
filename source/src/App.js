@@ -7,21 +7,20 @@ import BottomBorder from "./components/frame/BottomBorder";
 import WinScreen from "./components/frame/WinScreen";
 import GameOverScreen from "./components/frame/GameOverScreen";
 import GameBoard from "./components/game/GameBoard";
-import NPCImage from "./components/game/NPCImage";
 import StatsScreen from "./components/frame/StatsScreen";
 import HelpScreen from "./components/frame/HelpScreen";
 //Functions
 import { GetLocalStorage, gameSave, UpdateLifePoints, LoadHints } from "./modules/gamelogic/SaveGame";
-import { FormatNPCList, GetDailyRandNPC } from "./modules/fblogic/HandleNPC";
+import { ConstructWowHeadURL, dailyRandomNPC, FormatNPCList, GetDailyRandNPC } from "./modules/fblogic/HandleNPC";
 import { setHADailyNPC } from "./modules/gamelogic/HandleAnswer";
 import { GetImg } from "./modules/fblogic/GetIMG";
-import { createRoot } from "react-dom/client";
 import { GetStats } from "./modules/gamelogic/Stats";
 
 export default class App extends Component {
   constructor(){
     super();
     GetLocalStorage();
+    
     this.stats = GetStats();
     console.table(gameSave);
 
@@ -30,10 +29,13 @@ export default class App extends Component {
       todayLose: gameSave.todayLose,
       controlsDisabled: (gameSave.todayWin || gameSave.todayLose),
       statsShown: false,
-      helpShown: false
+      helpShown: false,
+      npcLoaded: false,
+      
     };
-
-    console.table(this.state);
+    this.npcName = null;
+    this.npcURL = null;
+    this.npcWowHeadURL = null;
   }
 
   componentDidMount(){
@@ -42,17 +44,11 @@ export default class App extends Component {
       GetDailyRandNPC(npcArr).then((npc) => {
         //Feeds Daily NPC to HandleAnswer
         setHADailyNPC(npc);
-        //Loads lifepoints from earlier session
-        UpdateLifePoints();
-        //Load hints from earlier session if exist
-        LoadHints();
-        GetImg(npc).then((randNPCImageUrl) => {
-          //Find NPC Image Container 
-          let imageContainer = document.getElementById('imagecontainer');
-          // Use React to create a root reference
-          const root = createRoot(imageContainer);
-          //Render Image
-          root.render(<NPCImage id='npcimage' src={randNPCImageUrl} />);
+        GetImg(npc).then((randNPCImageURL) => {
+          this.npcURL = randNPCImageURL;
+          this.npcName = dailyRandomNPC.name;
+          this.npcWowHeadURL = ConstructWowHeadURL();
+          this.setState({npcLoaded: true});
         });
       });
     });
@@ -76,21 +72,21 @@ export default class App extends Component {
    render() {
     return (
           <>
-          <div id='overlaycontainer'>
-            {/* This Renders Stats screen if this.state.statsshown === true */}
-            {this.state.todayWin && (<WinScreen />)}
-            {this.state.todayLose && (<GameOverScreen />)}
-            {this.state.statsShown && (<StatsScreen />)}
-            {this.state.helpShown && (<HelpScreen />)}
+          (<div id='overlaycontainer'>
+            {/* This Renders Stats screen if this.state.statsshown === true  and npc is loaded*/}
+            {this.state.npcLoaded && this.state.todayWin && (<WinScreen wowHeadURL={this.npcWowHeadURL} npcName={this.npcName}/>) }
+            {this.state.npcLoaded && this.state.todayLose && (<GameOverScreen wowHeadURL={this.npcWowHeadURL} npcName={this.npcName} />)}
+            {this.state.npcLoaded && this.state.statsShown && (<StatsScreen />)}
+            {this.state.npcLoaded && this.state.helpShown && (<HelpScreen />)}
           </div>
           <div className="playfield">
             <div id="playwindow">
 
               <Border className='Border' showStatScreen={this.ShowStatScreen.bind(this)} />
-              <GameBoard updateWinLoss={this.UpdateWinLoss.bind(this)} controlsDisabled={this.state.controlsDisabled}  />
+              {this.state.npcLoaded && (<GameBoard updateWinLoss={this.UpdateWinLoss.bind(this)} controlsDisabled={this.state.controlsDisabled}  npcURL={this.npcURL}/>)}
               <BottomBorder showHelpScreen={this.ShowHelpScreen.bind(this)} />
           </div>
-        </div>
+        </div>)
         </>
     )
   }

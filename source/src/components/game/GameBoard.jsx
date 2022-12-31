@@ -5,11 +5,20 @@ import NPCImage from './NPCImage';
 import GuessForm from './GuessForm';
 import LifeCounter from './LifeCounter';
 import HintBox from './HintBox';
-import HelpButton from '../frame/Buttons/HelpButton';
+//Modules
+import { UpdateLifePoints } from '../../modules/gamelogic/SaveGame';
+import { LoadHints } from '../../modules/gamelogic/SaveGame';
 
 export default class GameBoard extends Component {
   constructor(props){
     super(props);
+  }
+
+  componentDidMount(){
+    //Loads lifepoints from earlier session
+    UpdateLifePoints();
+    //Load hints from earlier session if exist
+    LoadHints();
   }
 
   render() {    
@@ -18,7 +27,7 @@ export default class GameBoard extends Component {
          <>
            <div className='gameboard'>
               <div id='imagecontainer'>
-                <NPCImage src="" id='npcimage' />
+                <NPCImage  id='npcimage' src={this.props.npcURL} />
               </div>
               <LifeCounter />
               <HintBox />

@@ -54,3 +54,9 @@ export function LoadHints(){
         UpdateHint(i);
     }
 }
+
+export function GetTurnCount(){
+    let turncount;
+    turncount = gameSave.turnCount;
+    return turncount;
+}

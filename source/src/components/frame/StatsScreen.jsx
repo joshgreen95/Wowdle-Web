@@ -1,33 +1,16 @@
 //Core
 import React from 'react';
-import { GetStats } from '../../modules/gamelogic/Stats';
+import { ClearStats, GetGamesPlayed, GetWinPercent } from '../../modules/gamelogic/Stats';
 import StatGraph from '../stats/StatGraph';
 
 export default function StatsScreen() {
-    let wins = 0;
-    let losses = 0;
-    let gamesPlayed = 0;
-    let winPercent = 0;
-    const stats = GetStats();
-    console.log(stats);
-
-    if(stats != null) {
-        gamesPlayed = stats.length;
-        
-        stats.forEach((value) => {
-            if(value >= 5) { losses ++ ; }
-            else { wins ++ ; } 
-            console.log(`wins ${wins} losses ${losses}`);
-        }); 
+    let winPercent = GetWinPercent();
+    let gamesPlayed = GetGamesPlayed();
     
-        winPercent = Math.floor((losses/wins) * 100);
-    };
-
-
-
     return (
         <>
             <div className='overlaywindow'> 
+                <h2>Statistics</h2>
                 <div className='statboxcontainer'>
                     <div id='statbox'>
                         <h3>{gamesPlayed}</h3>
@@ -38,15 +21,11 @@ export default function StatsScreen() {
                         <h4>Win %</h4>
                     </div>
                 </div>
-                {stats &&(<StatGraph />)}
-                <input type={'button'} onClick={() => ClearStats()} />
+                {gamesPlayed &&(<StatGraph />)}
+                <button className='resetbutton' onClick={() => ClearStats()}>Reset Stats</button>
             </div>
         </>
 
   )
 }
 
-function ClearStats(){
-    alert('Your Stats have been cleared');
-    localStorage.removeItem('stats');
-}

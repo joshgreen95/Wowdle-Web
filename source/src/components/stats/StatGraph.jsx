@@ -45,7 +45,7 @@ export default function StatGraph() {
   return (
     <>
     <h5>Guess Distribution</h5>
-    <BarChart  width={400} height={200} data={statsObj} layout={'vertical'} label='Guess Distribution' margin={{top: 0}}>
+    <BarChart  width={450} height={200} data={statsObj} layout={'vertical'} label='Guess Distribution' margin={{top: 0}}>
       <XAxis dataKey={'num'} type={'number'} axisLine={false} tick={false}/>
       <YAxis dataKey={'name'} minTickGap={0} tickMargin={2} type={'category'} tickLine={false} tick={'font-family: inherit'}/>
       <Bar dataKey={'num'} scale={0.2} fill={'#3a3a3c'} label={'num'} minPointSize={20} >
