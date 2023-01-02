@@ -20,6 +20,7 @@ import { NPC } from "./NPCTemplate";
         var elapsedDays = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
 
         //Test different days by changing number below
+        return 18;
         return elapsedDays + 1;
     };
 

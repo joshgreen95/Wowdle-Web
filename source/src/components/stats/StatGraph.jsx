@@ -29,19 +29,19 @@ export default function StatGraph() {
       num: 0
     }]
 
-
-
-
-  stats.forEach((value) => { 
+  if(stats && stats.isArray){
+    stats.forEach((value) => { 
     console.log(statsObj[value - 1]);
     if(value >= 5) {
       statsObj[4]['num'] += 1;
     } else {
-      statsObj[value -1]['num'] += 1;
+      statsObj[value - 1]['num'] += 1;
     }
-  });
-
-
+  });  
+} else if(stats){
+  statsObj[stats - 1]['num'] += 1;
+}
+  console.table(statsObj)
   return (
     <>
     <h5>Guess Distribution</h5>

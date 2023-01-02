@@ -5,9 +5,10 @@ let stats = [];
 
 export function GetStats(){
     let statsString = localStorage.getItem('stats');
-    if(!statsString) { return ; }
+    if(statsString === null){
+        return;
+    }
     stats = statsString.split(',');
-    console.log(`stats :${stats}`)
     return stats;
 }
 
@@ -20,7 +21,6 @@ function SaveStats(){
 export function AddStats(){
     let turnCount = gameSave.turnCount + 1;
     stats.push(turnCount);
-    console.log(stats);
     SaveStats();
 }
 
@@ -29,15 +29,16 @@ export function GetWinPercent(){
     let losses = 0;
     let winPercent = 0;
     //stops / 0 error
-    
-    if (stats != null) {
+
+    if (Object.keys(stats).length !== 0) {
         stats.forEach((value) => {
-            if (value >= 5) { losses++; }
-            else { wins++; }
+            if (value >= 5) { losses += 1; }
+            else { wins +=1; }
         });
-        if (losses === 0 && wins === 1) { return 100; }
-        winPercent = Math.floor((losses / wins) * 100);
-    };
+        winPercent = Math.floor((wins / (losses + wins)) * 100);
+    } else {
+        return 0
+    }
     return winPercent;
 }
 

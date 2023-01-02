@@ -22,8 +22,6 @@ export default class App extends Component {
     GetLocalStorage();
     
     this.stats = GetStats();
-    console.table(gameSave);
-
     this.state = {
       todayWin: gameSave.todayWin,
       todayLose: gameSave.todayLose,

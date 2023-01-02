@@ -3,7 +3,6 @@ export class GameState{
     constructor(){
         this.turnCount = 0;
         this.dateLastPlayed = new Date();
-        console.log(`gamestate is called and new date is ${new Date()}`)
         this.todayWin = false;
         this.todayLose = false;
     }

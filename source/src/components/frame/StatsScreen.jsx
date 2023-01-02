@@ -9,8 +9,8 @@ export default function StatsScreen() {
     
     return (
         <>
-            <div className='overlaywindow'> 
-                <h2>Statistics</h2>
+            <div className='overlaywindow' id='statistics'> 
+                {/* {<h2>Statistics</h2>} */}
                 <div className='statboxcontainer'>
                     <div id='statbox'>
                         <h3>{gamesPlayed}</h3>
