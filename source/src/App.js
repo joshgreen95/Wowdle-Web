@@ -70,7 +70,7 @@ export default class App extends Component {
    render() {
     return (
           <>
-          (<div id='overlaycontainer'>
+          <div id='overlaycontainer'>
             {/* This Renders Stats screen if this.state.statsshown === true  and npc is loaded*/}
             {this.state.npcLoaded && this.state.todayWin && (<WinScreen wowHeadURL={this.npcWowHeadURL} npcName={this.npcName}/>) }
             {this.state.npcLoaded && this.state.todayLose && (<GameOverScreen wowHeadURL={this.npcWowHeadURL} npcName={this.npcName} />)}
@@ -84,7 +84,7 @@ export default class App extends Component {
               {this.state.npcLoaded && (<GameBoard updateWinLoss={this.UpdateWinLoss.bind(this)} controlsDisabled={this.state.controlsDisabled}  npcURL={this.npcURL}/>)}
               <BottomBorder showHelpScreen={this.ShowHelpScreen.bind(this)} />
           </div>
-        </div>)
+        </div>
         </>
     )
   }

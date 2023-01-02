@@ -7,7 +7,6 @@ export default function WinScreen(props) {
   let turncount = GetTurnCount() + 1;
   let plural = (turncount > 1);
 
-  console.log(props.npcName);
   return (
     <div className='overlaywindow' id='win'>
       <div className='winscreen'>
