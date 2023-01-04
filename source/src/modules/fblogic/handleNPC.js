@@ -20,6 +20,7 @@ import { NPC } from "./NPCTemplate";
         var elapsedDays = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
 
         //Test different days by changing number below
+        return 1;
         return elapsedDays + 1;
     };
 
@@ -31,7 +32,7 @@ import { NPC } from "./NPCTemplate";
                 let npcZone = npc._document.data.value.mapValue.fields.zone.stringValue;
                 let npcContinent = npc._document.data.value.mapValue.fields.continent.stringValue;
                 let npcFaction = npc._document.data.value.mapValue.fields.faction.stringValue;
-                let npcIMG = npc._document.data.value.mapValue.fields.img.referenceValue;
+                let npcIMG = npc._document.data.value.mapValue.fields.img.stringValue;
                 let npcID = npc._document.data.value.mapValue.fields.id.stringValue;
 
                 const newNPC = new NPC(npcName, npcZone, npcContinent, npcFaction, npcIMG, npcID);
