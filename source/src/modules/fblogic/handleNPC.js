@@ -37,11 +37,11 @@ import { NPC } from "./NPCTemplate";
                 const newNPC = new NPC(npcName, npcZone, npcContinent, npcFaction, npcIMG, npcID);
                 
                 //Uncomment to NPCS npc
-                // console.log(newNPC);
+                console.log(newNPC);
                 
                 npcArray.push(newNPC);
             })
-            
+            return 6;   
             return npcArray;      
         })
         .catch((error) => {
@@ -57,8 +57,8 @@ import { NPC } from "./NPCTemplate";
         const rndNPCIndex = Math.floor(arrLength * cosMultiplier);
         
         //Uncomment to see daily random npc
-        // console.log("Daily Random NPC is:")
-        // console.log(npcArray[rndNPCIndex]);
+        console.log("Daily Random NPC is:")
+        console.log(npcArray[rndNPCIndex]);
 
         dailyRandomNPC = npcArray[rndNPCIndex];
         
