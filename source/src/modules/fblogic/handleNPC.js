@@ -20,7 +20,6 @@ import { NPC } from "./NPCTemplate";
         var elapsedDays = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
 
         //Test different days by changing number below
-        return 1;
         return elapsedDays + 1;
     };
 
@@ -36,9 +35,11 @@ import { NPC } from "./NPCTemplate";
                 let npcID = npc._document.data.value.mapValue.fields.id.stringValue;
 
                 const newNPC = new NPC(npcName, npcZone, npcContinent, npcFaction, npcIMG, npcID);
-                console.log(newNPC);
+                
+                //Uncomment to NPCS npc
+                // console.log(newNPC);
+                
                 npcArray.push(newNPC);
-                  
             })
             
             return npcArray;      
@@ -46,16 +47,18 @@ import { NPC } from "./NPCTemplate";
         .catch((error) => {
             throw new error("Cannot retrieve NPC list");
         });
-        
     };
 
     export async function GetDailyRandNPC(npcArr){
+        if(dailyRandomNPC !== null){return ;}
         const day = GetCurrentDay();
         const arrLength = npcArray.length;
         const cosMultiplier = Math.abs(Math.cos(day));
         const rndNPCIndex = Math.floor(arrLength * cosMultiplier);
-        console.log("Daily Random NPC is:")
-        console.log(npcArray[rndNPCIndex]);
+        
+        //Uncomment to see daily random npc
+        // console.log("Daily Random NPC is:")
+        // console.log(npcArray[rndNPCIndex]);
 
         dailyRandomNPC = npcArray[rndNPCIndex];
         
