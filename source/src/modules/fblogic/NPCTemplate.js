@@ -8,5 +8,4 @@ export class NPC {
         this.img = img;
         this.id = id;
     }
-
 };

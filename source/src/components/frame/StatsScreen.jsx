@@ -2,15 +2,16 @@
 import React from 'react';
 import { ClearStats, GetGamesPlayed, GetWinPercent } from '../../modules/gamelogic/Stats';
 import StatGraph from '../stats/StatGraph';
+import CloseWindow from './Buttons/CloseWindow';
 
-export default function StatsScreen() {
+export default function StatsScreen(props) {
     let winPercent = GetWinPercent();
     let gamesPlayed = GetGamesPlayed();
     
     return (
         <>
             <div className='overlaywindow' id='statistics'> 
-                {/* {<h2>Statistics</h2>} */}
+                <CloseWindow CloseOverlay={props.CloseOverlay}/>
                 <div className='statboxcontainer'>
                     <div id='statbox'>
                         <h3>{gamesPlayed}</h3>

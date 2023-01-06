@@ -6,7 +6,7 @@ export default function Border(props) {
   return (
     <>
     <div className='border'>
-        <StatsButton id='statsbutton' showStatScreen={props.showStatScreen} />
+        <StatsButton id='statsbutton' ShowStatScreen={props.ShowStatScreen} />
     </div>
 
     </>

@@ -1,12 +1,13 @@
 //Core
 import React from 'react';
-//Modules
-import { gitLink } from '../../modules/fblogic/params';
+//Components
+import CloseWindow from './Buttons/CloseWindow';
 import Donate from './Donate';
 
-export default function HelpScreen() {
+export default function HelpScreen(props) {
     return (
             <div className='overlaywindow' id='help'> 
+                <CloseWindow CloseOverlay={props.CloseOverlay}/>
                 <ul className='instructions'>
                     <li>Every day the game will display a new character.</li>
                     <li>In the text box below, type in your guess and press <em>enter</em>.</li>

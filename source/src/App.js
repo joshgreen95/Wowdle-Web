@@ -20,7 +20,6 @@ export default class App extends Component {
   constructor(){
     super();
     GetLocalStorage();
-    
     this.stats = GetStats();
     this.state = {
       todayWin: gameSave.todayWin,
@@ -67,22 +66,25 @@ export default class App extends Component {
     this.setState({ helpShown: inverseHelpShown, statsShown: false });
   }
 
+  CloseOverlay(){
+    this.setState({ helpShown: false, statsShown: false });
+  }
+
    render() {
     return (
           <>
           <div id='overlaycontainer'>
-            {/* This Renders Stats screen if this.state.statsshown === true  and npc is loaded*/}
             {this.state.npcLoaded && this.state.todayWin && (<WinScreen wowHeadURL={this.npcWowHeadURL} npcName={this.npcName}/>) }
             {this.state.npcLoaded && this.state.todayLose && (<GameOverScreen wowHeadURL={this.npcWowHeadURL} npcName={this.npcName} />)}
-            {this.state.npcLoaded && this.state.statsShown && (<StatsScreen />)}
-            {this.state.npcLoaded && this.state.helpShown && (<HelpScreen />)}
+            {this.state.npcLoaded && this.state.statsShown && (<StatsScreen CloseOverlay={this.CloseOverlay.bind(this)}/>)}
+            {this.state.npcLoaded && this.state.helpShown && (<HelpScreen CloseOverlay={this.CloseOverlay.bind(this)} />)}
           </div>
           <div className="playfield">
             <div id="playwindow">
 
-              <Border className='Border' showStatScreen={this.ShowStatScreen.bind(this)} />
-              {this.state.npcLoaded && (<GameBoard updateWinLoss={this.UpdateWinLoss.bind(this)} controlsDisabled={this.state.controlsDisabled}  npcURL={this.npcURL}/>)}
-              <BottomBorder showHelpScreen={this.ShowHelpScreen.bind(this)} />
+              <Border className='Border' ShowStatScreen={this.ShowStatScreen.bind(this)} />
+              {this.state.npcLoaded && (<GameBoard UpdateWinLoss={this.UpdateWinLoss.bind(this)} controlsDisabled={this.state.controlsDisabled}  npcURL={this.npcURL}/>)}
+              <BottomBorder ShowHelpScreen={this.ShowHelpScreen.bind(this)} />
           </div>
         </div>
         </>

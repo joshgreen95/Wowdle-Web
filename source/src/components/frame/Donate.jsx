@@ -1,5 +1,7 @@
 //core
-import React from 'react'
+import React from 'react';
+//params
+import { gitLink, websiteLink, donationLink } from '../../modules/fblogic/params';
 
 export default function Donate() {
   return (
