@@ -225,6 +225,7 @@ h2{
 
 #hint{
     width: 100px;
+
     margin-top: 10px;
     margin-right: 20px;
     
@@ -232,6 +233,10 @@ h2{
     font-weight: 500;
     font-size: 18px;
     text-align: center;
+}
+
+.hintcontent{
+        height: 44px;
 }
 
 #guessform{
@@ -466,6 +471,7 @@ h2{
         font-size: 48px;
     }
 
+    
     #guessform{
         margin-top: 50px;
         font-size: 48px;
@@ -479,7 +485,7 @@ h2{
     #textbox{
         width: 600px;
         height: 100px;
-
+        position: absolute;
         margin-left: 55px;
 
         font-size: 48px;
