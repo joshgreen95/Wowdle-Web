@@ -556,4 +556,16 @@ h2{
         text-align: left;
         margin-top: 100px;
     }
+
+    .closebutton{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        
+        font-size: xx-large;
+
+        height: 50px;
+        width: 50px;
+        left: 900px;
+    }
 }
