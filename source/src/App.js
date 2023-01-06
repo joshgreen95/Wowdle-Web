@@ -81,7 +81,6 @@ export default class App extends Component {
           </div>
           <div className="playfield">
             <div id="playwindow">
-
               <Border className='Border' ShowStatScreen={this.ShowStatScreen.bind(this)} />
               {this.state.npcLoaded && (<GameBoard UpdateWinLoss={this.UpdateWinLoss.bind(this)} controlsDisabled={this.state.controlsDisabled}  npcURL={this.npcURL}/>)}
               <BottomBorder ShowHelpScreen={this.ShowHelpScreen.bind(this)} />

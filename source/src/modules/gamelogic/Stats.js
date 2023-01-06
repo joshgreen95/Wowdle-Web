@@ -5,9 +5,11 @@ let stats = [];
 
 export function GetStats(){
     let statsString = localStorage.getItem('stats');
+
     if(statsString === null){
         return;
-    }
+    };
+
     stats = statsString.split(',');
     return stats;
 }
@@ -29,16 +31,17 @@ export function GetWinPercent(){
     let losses = 0;
     let winPercent = 0;
     //stops / 0 error
-
     if (Object.keys(stats).length !== 0) {
         stats.forEach((value) => {
             if (value >= 5) { losses += 1; }
             else { wins +=1; }
         });
+
         winPercent = Math.floor((wins / (losses + wins)) * 100);
     } else {
         return 0
-    }
+    };
+
     return winPercent;
 }
 
@@ -46,7 +49,7 @@ export function GetGamesPlayed(){
     if(stats != null){
         return stats.length;
     }
-    else return 0;
+    else { return 0; }
 }
 
 export function ClearStats() {

@@ -14,7 +14,9 @@ export function setHADailyNPC(npc)
 export function HandleAnswer(answer) {
     const dailyNPCName = dailyNPC.name.toLowerCase();
     const sanitizedAnswer = SanitizeAnswer(answer);
+
     if (!dailyNPCName) { console.error("Error selecting Daily NPC"); }
+
     if (!sanitizedAnswer) { return ; }
 
     if (sanitizedAnswer === dailyNPCName){
@@ -24,31 +26,34 @@ export function HandleAnswer(answer) {
         gameSave.turnCount ++;
         HandleTurn(gameSave.turnCount);
         UpdateLifePoints();
-    }
+    };
+
     SaveGame();
-    
 }
 
 function HandleTurn(turnCount){
+   
     switch (turnCount) {
         case 1:
             UpdateHint(1);
-        break;
+            break;
         case 2:
             UpdateHint(2);
-        break;
+            break;
         case 3:
             UpdateHint(3);
-        break;
+            break;
         case 4:
             HandleLoss();
             SaveGame();
-        break;
+            break;
         default:
             console.log('Switch case is broken aaaaa');
-        break;
+            break;
     }
+
     if (turnCount > 4) { HandleLoss() };
+
 }
 
 function SanitizeAnswer(answer){
@@ -62,13 +67,15 @@ export function UpdateHint(hintIndex) {
     const zoneHintRef = document.getElementById('zonehint');
     const factionHintRef = document.getElementById('factionhint');
 
-    if (hintIndex === 1) {
-        continentHintRef.innerHTML = `${dailyNPC.continent}`;
-    }
-    if (hintIndex === 2) {
-        zoneHintRef.innerHTML = `${dailyNPC.zone}`;
-    }
-    if (hintIndex === 3) {
-        factionHintRef.innerHTML = `${dailyNPC.faction}`;
+    switch(hintIndex){
+        case 1:
+            continentHintRef.innerHTML = `${dailyNPC.continent}`;
+            break;
+        case 2:
+            zoneHintRef.innerHTML = `${dailyNPC.zone}`;
+            break;
+        case 3:
+            factionHintRef.innerHTML = `${dailyNPC.faction}`;
+            break;
     }
 }

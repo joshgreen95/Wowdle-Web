@@ -34,9 +34,11 @@ export function SaveGame() {
 
 export function UpdateLifePoints() {
     let turncount = gameSave.turnCount;
-    //Crashes if turncount is more than 4 as there are only 3 elements.
-    if(turncount >= 4) { turncount = 3;}
-    if (turncount === 0) { return ; }
+
+    if(turncount >= 4) { turncount = 3; }
+
+    if (turncount === 0) { return; }
+
     for (let i = 0; i < turncount; i++) {
         const lifepoint = document.getElementById(`lifepoint${i}`);
         lifepoint.style.background = 'rgba(1, 1, 1, 0)';
