@@ -240,7 +240,6 @@ h2{
 }
 
 #guessform{
-    margin-left: -180px;
     margin-top: 50px;
 }
 
@@ -258,7 +257,7 @@ h2{
 }
 #guessfield{
     width: 210px;
-    margin-top: 0px;
+    margin-top: 15px;
     margin-left: 20px;
 
     background: transparent;
@@ -275,7 +274,7 @@ h2{
 }
 
 .formlabel{
-    margin-left: 45px;
+    margin-left: 25px;
     text-align: center;
     font-family: inherit;
     font-weight: 400;
