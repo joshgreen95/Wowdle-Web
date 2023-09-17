@@ -11,6 +11,9 @@ export function GetStats(){
     };
 
     stats = statsString.split(',');
+    const adjustedStats = [];
+
+    console.log(stats);
     return stats;
 }
 

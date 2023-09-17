@@ -23,6 +23,7 @@ export function GetLocalStorage(){
         gameSave.todayLose = localStorage.getItem('todayLose') === 'true';
     }
     GetStats();
+    console.log(gameSave);
 }
 
 export function SaveGame() {

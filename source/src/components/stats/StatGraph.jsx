@@ -10,23 +10,23 @@ export default function StatGraph() {
   const statsObj = [
     {
       name: '1',
-      num: 0
+      num: 1
     },
     {
       name: '2',
-      num: 0
+      num: 2
     },
     {
       name: '3',
-      num: 0
+      num: 2
     },
     {
       name: '4',
-      num: 0
+      num: 3
     },
     {
       name: 'fails',
-      num: 0
+      num: 3
     }]
 
   if(stats && stats.isArray){
@@ -38,10 +38,13 @@ export default function StatGraph() {
       statsObj[value - 1]['num'] += 1;
     }
   });  
-} else if(stats){
+  } else if(stats.length <= 1){
+  console.log(stats);
   statsObj[stats - 1]['num'] += 1;
-}
-  return (
+  }
+  
+  console.log(statsObj);
+return (
     <>
     <h5>Guess Distribution</h5>
     <ResponsiveContainer width={'70%'} height={'40%'}>
