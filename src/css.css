@@ -11,10 +11,12 @@ body {
     font-weight: 500;
     overflow: hidden;
 }
+
 h4{
     font-family: inherit;
     font-size: 12px;
 }
+
 h5{
     font-family: inherit;
     font-weight: 500;
@@ -35,6 +37,10 @@ h2{
     flex-wrap: nowrap;
     flex-direction: column;
     margin: auto;
+}
+
+a{
+        color: #9c27b0;
 }
 
 #overlaycontainer{    
@@ -81,14 +87,16 @@ h2{
     width: 480px;
     background-image: url('../public/imgs/popup_winscreen.png');
     background-repeat: no-repeat;
-    margin-top: 100px;
+    margin-top: 115px;
+    margin-left: -75px;
 }
 .overlaywindow#loss {
     height: 640px;
     width: 480px;
     background-image: url('../public/imgs/popup_gameover.png');
     background-repeat: no-repeat;
-    margin-top: 100px;
+    margin-top: 115px;
+    margin-left: -75px;
 }
 
 #playwindow{
@@ -195,6 +203,7 @@ h2{
     justify-content: center;
     flex-direction: row-reverse;
     margin-right: 75px;
+    margin-top: 1vh;
 }
 
 .lifepoint{
@@ -240,7 +249,7 @@ h2{
 }
 
 #guessform{
-    margin-left: -180px;
+    margin-left: -150px;
     margin-top: 50px;
 }
 
@@ -251,18 +260,18 @@ h2{
 
     width: 300px;
     height: 50px;
-    margin-left: -50px;
+    margin-left: 140px;
 
     background-color: transparent;
     border-color: transparent;
 }
 #guessfield{
     width: 210px;
-    margin-top: 0px;
+    margin-top: 12px;
     margin-left: 20px;
 
     background: transparent;
-    border: transparent;
+    border: 1px dotted red;
 
     font-family: inherit;
     font-weight: 300;
@@ -275,7 +284,7 @@ h2{
 }
 
 .formlabel{
-    margin-left: 45px;
+    margin-left: 220px;
     text-align: center;
     font-family: inherit;
     font-weight: 400;
@@ -439,6 +448,7 @@ h2{
     #helpbutton{
         height: 55px;
         width: 187px;
+
         background-size: 100%;
         cursor: pointer;
     }
@@ -461,6 +471,7 @@ h2{
 
     #hintbox{
         width: 720px;
+        margin-top: 1vh;
     }
 
     #hint{
@@ -470,7 +481,7 @@ h2{
 
     
     #guessform{
-        margin-top: 50px;
+        margin-top: 5vh;
         font-size: 48px;
     }
     
@@ -491,7 +502,8 @@ h2{
     #guessfield{
         width: 450px;
         height: 75px;
-        margin-left: 45px;
+        margin-top: 0.4vh;
+        margin-left: 4vw;
         font-size: 48px;
     }
 
@@ -499,11 +511,13 @@ h2{
         width: 975px;
         height: 825px;
             
-        margin-top: 187.5px;
+        margin-top: 200px;
         margin-left: 0px;
 
         background-size: 100%;
         text-align: center;
+
+        z-index: 3;
     }
 
     .overlaywindow#win{
@@ -511,13 +525,17 @@ h2{
         width: 900px;
         background-size: 100%;
         margin-left: 30px;
+
+        z-index: 3;
     }
     
     .overlaywindow#loss {
         height: 1160px;
         width: 900px;
         background-size: 100%;
-        margin-left: 30px;
+        margin-left: 30px;  
+
+        z-index: 3;
     }
 
     .donate{
