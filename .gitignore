@@ -4,6 +4,7 @@ node_modules/
 .github/workflows/firebase-hosting-pull-request.yml
 .firebaserc
 .firebase
+build/
 build/404.html
 build/asset-manifest.json
 build/imgs/background.jpg
@@ -37,3 +38,4 @@ build/static/media/textbox.1628b257aede99c160c0.png
 build/static/media/window.fae24966d3886d7cf0df.png
 firebase.json
 .gitignore
+Wowdle-Web.code-workspace
